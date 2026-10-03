@@ -144,14 +144,14 @@ warn_return_any = false
 #
 # NOTE: some of these ARE the intentionally-seeded course bugs, and mypy is
 # correctly catching them. Do not "fix" them outside their issue:
-#   api/routes/health.py  attr-defined -> issue #62 (settings.redis_host does
-#                         not exist on Settings) and related #61.
+#   api/routes/health.py  call-overload, index -> related to issue #61.
+#   (issue #62's attr-defined entry was removed here when #62 was fixed.)
 # Fixing a seeded bug should remove its entry here, the same way it removes the
 # test's xfail marker.
 
 [[tool.mypy.overrides]]
 module = "api.routes.health"
-disable_error_code = ["attr-defined", "call-overload", "index"]
+disable_error_code = ["call-overload", "index"]
 
 [[tool.mypy.overrides]]
 module = ["api.routes.profiles", "api.routes.reviews", "core.logging", "core.services.review_service", "ingestion.pipeline", "rag.generator.review_generator"]
